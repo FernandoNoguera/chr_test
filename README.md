@@ -51,4 +51,4 @@ Tarea 1:
 http://localhost:8000/
 
 Tarea 2:
-http://localhost:8000/
+http://localhost:8000/scraping/
