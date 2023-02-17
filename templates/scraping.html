@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Scraping{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1>Tabla Scraping</h1>
+        <p>La muestra de datos de esta página puede tardar varios minutos</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">TIPO</th>
+                    <th scope="col">REGION</th>
+                    <th scope="col">TIPOLOGIA</th>
+                    <th scope="col">TITULAR</th>
+                    <th scope="col">INVERSION</th>
+                    <th scope="col">FECHA PRESENTACION FECHA INGRESO</th>
+                    <th scope="col">ESTADO</th>
+                </tr>
+            </thead>
+            {% for el in data %}
+            <tbody>
+                <tr>
+                    <th scope="row">{{ el.columna_1 }}</th>
+                    <td>{{ el.columna_2 }}</td>
+                    <td>{{ el.columna_3 }}</td>
+                    <td>{{ el.columna_4 }}</td>
+                    <td>{{ el.columna_5 }}</td>
+                    <td>{{ el.columna_6 }}</td>
+                    <td>{{ el.columna_7 }}</td>
+                    <td>{{ el.columna_8 }}</td>
+                    <td>{{ el.columna_9 }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
