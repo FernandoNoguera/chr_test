@@ -85,6 +85,7 @@ __pycache__/
 local_settings.py
 
 .env
+.venv
 .env.dev
 .env.prod
 db.sqlite3
