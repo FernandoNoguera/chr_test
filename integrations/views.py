@@ -102,7 +102,7 @@ def index(request):
 def soup(request):
     data = []
     url = "https://seia.sea.gob.cl/busqueda/buscarProyectoAction.php"
-    for i in range(10): #2844
+    for i in range(2844): #add pages
         params = {
             "_paginador_fila_actual": f"{i+1}",
         }
