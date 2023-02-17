@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+from datetime import timedelta
+
+# Dotenv
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+load_dotenv(dotenv_path, verbose=True)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m1w-*sk3@n#k40o_0m$3qlyp(hw5=8x2h8!#4w)jvu1bb0vcat'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = []
 
@@ -77,13 +86,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": os.environ.get("ENGINE_DB","django.db.backends.postgresql_psycopg2"),
+        "NAME": os.environ.get("NAME_DB", os.path.join(BASE_DIR, "db")),
+        "USER": os.environ.get("USER_DB", "root"),
+        "PASSWORD": os.environ.get("PASSWORD_DB", "1234"),
+        "HOST": os.environ.get("HOST_DB", "localhost"),
+        "PORT": os.environ.get("PORT_DB", "5432"),
     }
 }
 
