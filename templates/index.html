@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Datos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h1>{{ response.name }}</h1>
+        <p  >ubicada en: {{ response.location.city }}</p>
+        <p class="mt-3">Empresas:</p>
+        <ul>
+            {% for company in response.company %}
+            <li>{{ company }}</li>
+            {% endfor %}
+        </ul>
+        <p>Estaciones:</p>
+        <div class="row row-cols-1 row-cols-md-3 g-4">  
+            {% for station in response.stations.all %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-header"><b>{{ station.name }}</b></div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ranuras vacías: {{ station.empty_slots }}</li>
+                            <li class="list-group-item">Dirección: {{ station.extra.address }}</li>
+                            <li class="list-group-item">Bicicletas libres: {{ station.free_bikes }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
